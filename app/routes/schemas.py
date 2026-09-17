@@ -13,13 +13,13 @@ class IssuePriority(str, Enum):
     high = "high"
 
 class IssueCreate(BaseModel):
-    title: str = Field(min_length=3, max_length=50)
-    description: str = Field(min_length=10, max_length=1000)
+    title: str = Field(min_length=3, max_length=50, examples=["Login button unresponsive"])
+    description: str = Field(min_length=10, max_length=1000, examples=["Clicking login does nothing on Safari"])
     priority: IssuePriority = IssuePriority.low
 
 class IssueUpdate(BaseModel):
-    title: Optional[str] = Field(default=None, max_length=50)
-    description: Optional[str] = Field(default=None, max_length=1000)
+    title: Optional[str] = Field(default=None, max_length=50, examples=["Login button unresponsive"])
+    description: Optional[str] = Field(default=None, max_length=1000, examples=["Clicking login does nothing on Safari"])
     priority: Optional[IssuePriority] = None
     status: Optional[IssueStatus] = None
 

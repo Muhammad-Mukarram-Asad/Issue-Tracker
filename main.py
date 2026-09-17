@@ -15,3 +15,13 @@ app.add_middleware(
 )
 
 app.include_router(issues_router)
+
+
+@app.get("/", tags=["root"])
+async def root():
+    """Landing endpoint with a pointer to the interactive API docs"""
+    return {
+        "message": "Welcome to the FastAPI Issue Tracker API",
+        "docs": "/docs",
+        "redoc": "/redoc",
+    }
