@@ -1,7 +1,11 @@
 from pathlib import Path
 import json
+import os
 
-DATA_DIR = Path("Data")
+# Vercel's filesystem is read-only except for /tmp, so fall back to it
+# there. Note: /tmp is ephemeral and not shared across instances, so this
+# is not persistent storage in production - only a stopgap.
+DATA_DIR = Path("/tmp") if os.environ.get("VERCEL") else Path("Data")
 DATA_FILE = DATA_DIR / "issues.json"
 
 def load_data():

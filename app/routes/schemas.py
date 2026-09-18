@@ -14,7 +14,7 @@ class IssuePriority(str, Enum):
 
 class IssueCreate(BaseModel):
     title: str = Field(min_length=3, max_length=50, examples=["Login button unresponsive"])
-    description: str = Field(min_length=10, max_length=1000, examples=["Clicking login does nothing on Safari"])
+    description: str = Field(min_length=5, max_length=1000, examples=["Clicking login does nothing on Safari"])
     priority: IssuePriority = IssuePriority.low
 
 class IssueUpdate(BaseModel):
